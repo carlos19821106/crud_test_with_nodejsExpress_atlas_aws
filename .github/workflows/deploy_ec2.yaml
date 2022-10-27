@@ -1,51 +1,33 @@
-
-name: node ci/cd
-
-on: [push]
-
-jobs:
-
-  build:
-
-  
+--- 
+jobs: 
+  build: 
     runs-on: ubuntu-latest
-
-    steps:
-
-  
-    - name: checkout the files
-      uses: actions/checkout@v2
-
-    - name: Install Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '12.x'
-    - name: install npm dependencies
-      run: npm install
-    - name: run build test
-      run: npm run build --if-present
-
-    
-    - name: Prepare SSH to work with the remote server
-        run: cd ~
-        run: cd .ssh
-        run: echo "${{ secrets.SSH_HOSTKEY }}" > ~/.ssh/known_hosts
-
-
-
-    - name: deploy to ec2
-      uses: easingthemes/ssh-deploy@main
-      env:
-        SSH_PRIVATE_KEY: ${{ Secrets.SERVER_SSH_KEY }}
-        # ARGS: "-rltgoDzvO --delete"
-        # SOURCE: "dist/"
-        REMOTE_HOST: ${{ Secrets.REMOTE_HOST }}
-        REMOTE_USER: ${{ Secrets.REMOTE_USER }}
-        TARGET: ${{ Secrets.REMOTE_TARGET }}
-        # EXCLUDE: "/dist/, /node_modules/
-
-
-
-
-
-
+    steps: 
+      - 
+        name: "checkout the files"
+        uses: actions/checkout@v2
+      - 
+        name: "Install Node.js"
+        uses: actions/setup-node@v2
+        with: 
+          node-version: 12.x
+      - 
+        name: "install npm dependencies"
+        run: "npm install"
+      - 
+        name: "run build test"
+        run: "npm run build --if-present"
+      - 
+        name: "Prepare SSH to work with the remote server"
+        run: "cd ~ && cd .ssh && echo \\\"${{ secrets.SSH_HOSTKEY }}\\\" > ~/.ssh/known_hosts\n"
+      - 
+        env: 
+          REMOTE_HOST: "${{ secrets.REMOTE_HOST }}"
+          REMOTE_USER: "${{ secrets.REMOTE_USER }}"
+          SSH_PRIVATE_KEY: "${{ secrets.SERVER_SSH_KEY }}"
+          TARGET: "${{ secrets.REMOTE_TARGET }}"
+        name: "deploy to ec2"
+        uses: easingthemes/ssh-deploy@main
+name: "node ci/cd"
+true: 
+  - push
