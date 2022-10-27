@@ -17,8 +17,17 @@
 
   <script>
     function getalldata(){
-        
-        console.log("test");
+      var dataBack;
+      $.ajax({
+        type: 'GET',
+        url: '/posts',
+        // data: dataBack,
+        success: function(dataBack){
+          console.log(dataBack);
+        },//可以指定函式或匿名函式
+        dataType: 'json' //可省略不寫
+      });
+        // console.log("test");
     }
   </script>
   <div>
