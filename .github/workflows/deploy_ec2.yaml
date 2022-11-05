@@ -31,17 +31,13 @@ jobs:
         cd ~ && mkdir .ssh && cd .ssh && echo \"${{ secrets.SSH_HOSTKEY }}\" > ~/.ssh/known_hosts
 
 
-
     - name: deploy to ec2
       uses: easingthemes/ssh-deploy@main
       env:
         SSH_PRIVATE_KEY: ${{ Secrets.SERVER_SSH_KEY }}
-        # ARGS: "-rltgoDzvO --delete"
-        # SOURCE: "dist/"
         REMOTE_HOST: ${{ Secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ Secrets.REMOTE_USER }}
         TARGET: ${{ Secrets.REMOTE_TARGET }}
-        # EXCLUDE: "/dist/, /node_modules/
 
 
 
