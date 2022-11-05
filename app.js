@@ -14,6 +14,11 @@ const cors = require('cors');
 
 var app = express();
 
+
+// app.configure(function(){
+//   app.use(express.bodyParser());
+// });
+
 //db related
 const mongoose = require("mongoose");
 require("dotenv/config");
@@ -22,10 +27,10 @@ mongoose.connect(process.env.DB_CONNECTION,{ useUnifiedTopology: true,useNewUrlP
   console.log("connect DB!")
 });
 //post related
-const postRouter = require('./routes/posts');
+const postRouter = require('./routes/webapi_0');
 
 
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+// app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 //set the path of public for front end use the resource in public
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static('public'));
@@ -42,7 +47,9 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 //post related
-app.use('/posts', postRouter);
+
+
+app.use('/webapi_0', postRouter);
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -60,7 +67,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('/pages/error');
+  res.render('pages/error');
 });
 
 module.exports = app;

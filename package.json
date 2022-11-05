@@ -5,7 +5,8 @@
   "scripts": {
     "_start": "node ./bin/www",
     "start": "nodemon ./bin/www",
-    "__start": "nodemon app.js"
+    "__start": "nodemon app.js",
+    "test": "jest --env=jsdom"
   },
   "dependencies": {
     "body-parser": "^1.20.1",
@@ -15,11 +16,17 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "~4.16.1",
+    "fs": "^0.0.1-security",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "jest-environment-jsdom": "^29.2.2",
     "jquery": "^3.6.1",
+    "json-stringify-safe": "^5.0.1",
     "mongoose": "^6.6.6",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "jest": "^29.2.2"
   }
 }
