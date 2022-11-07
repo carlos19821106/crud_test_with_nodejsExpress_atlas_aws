@@ -6,12 +6,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
     steps:
-
-    # - name: change permission
-    #   run: chmod 700 -R /home/runner/work/crud_test_with_nodejsExpress_atlas_aws/
-    
     - uses: actions/checkout@v1
     - name: Run Jest
       uses: stefanoeb/jest-action@1.0.3
