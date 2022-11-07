@@ -38,6 +38,7 @@ jobs:
         REMOTE_HOST: ${{ Secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ Secrets.REMOTE_USER }}
         TARGET: ${{ Secrets.REMOTE_TARGET }}
+      run: chmod 777 -R /home/ubuntu/crud_test
 
 
 
