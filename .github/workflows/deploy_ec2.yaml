@@ -1,5 +1,5 @@
 
-name: node ci/cd
+name: node ci
 
 on: [push]
 
