@@ -1,0 +1,22 @@
+#activate service when server boots
+
+[Unit]
+
+Description=crud_test nodejs express atlas practice example
+
+[Service]
+
+ExecStart=/usr/bin/npm start
+
+User=ubuntu
+WorkingDirectory=/home/ubuntu/crud_test
+Restart=always
+RestartSec=10s
+TimeoutSec=infinity
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+#how to install this script please check: https://www.suse.com/support/kb/doc/?id=000019672
