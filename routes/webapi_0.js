@@ -12,7 +12,10 @@ var fs = require('fs');
 //get all db documents
 router.get('/', async (req, res) => {
     try {
-        const finePosts = await Post.find()
+        // const finePosts = await Post.find()
+        const finePosts=[{_id:'01',title:'anatomy 2nd Edition',connect:'new',__v:0},
+        {_id:'02',title:'how to run faster with getting hurt',connect:'old',__v:0},
+        {_id:'03',title:'it is just a moutain',connect:'fine',__v:0}];
         res.json(finePosts)
     } catch (err) {
         res.json({ message: err })

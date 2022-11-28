@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// var usersRouter = require('./routes/users');
 
 //for rest api
 const bodyParser = require('body-parser');
@@ -33,10 +33,12 @@ const postRouter = require('./routes/webapi_0');
 // app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 //set the path of public for front end use the resource in public
 app.use(express.static(path.join(__dirname, 'public')));
+
 // app.use(express.static('public'));
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+
+app.set('views', path.join(__dirname, 'public'));
+app.set('view engine', 'html');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -67,7 +69,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('pages/error');
+  res.render('public/error');
 });
 
 module.exports = app;

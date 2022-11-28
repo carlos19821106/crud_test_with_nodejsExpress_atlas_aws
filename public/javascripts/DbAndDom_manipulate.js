@@ -1,6 +1,6 @@
 var successCallBack4getAll=((dataBack,status)=>
   {
-    // (dataBack, status){
+    
       console.log(dataBack);
       console.log(status);
       
@@ -12,8 +12,8 @@ var successCallBack4getAll=((dataBack,status)=>
 
         lineContent="<tr><td id="+id+">"+id+"</td><td><input type='text' value='"+name+"''>"+
           "</td><td><input type='text' value='"+attribute+"'></td>";
-        var markup = lineContent + "<td>"+"<button id=b"+lineNo+"_del onclick=delRow($(this))>Delete</button>"+
-        "</td><td>"+"<button id=b"+lineNo+"_update onclick=updateRow($(this))>Update</button></td></tr>";
+        var markup = lineContent + "<td hidden>"+"<button id=b"+lineNo+"_del onclick=delRow($(this))>Delete</button>"+
+        "</td><td hidden>"+"<button id=b"+lineNo+"_update onclick=updateRow($(this))>Update</button></td></tr>";
         // console.log(lineNo);
         var tableBody = $("#tbody_0");
         tableBody.append(markup);
