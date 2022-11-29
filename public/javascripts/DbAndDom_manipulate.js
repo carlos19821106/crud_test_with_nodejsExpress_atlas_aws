@@ -1,27 +1,30 @@
-var successCallBack4getAll=((dataBack,status)=>
-  {
-    
-      console.log(dataBack);
-      console.log(status);
+
+
+
+  var successCallBack4getAll=((dataBack,status)=>
+    {
       
-      var lineNo=0;
-
-      dataBack.forEach(element => {
+        console.log(dataBack);
+        console.log(status);
         
-        id=element._id; name=element.title; attribute=element.connect;
+        var lineNo=0;
 
-        lineContent="<tr><td id="+id+">"+id+"</td><td><input type='text' value='"+name+"''>"+
-          "</td><td><input type='text' value='"+attribute+"'></td>";
-        var markup = lineContent + "<td hidden>"+"<button id=b"+lineNo+"_del onclick=delRow($(this))>Delete</button>"+
-        "</td><td hidden>"+"<button id=b"+lineNo+"_update onclick=updateRow($(this))>Update</button></td></tr>";
-        // console.log(lineNo);
-        var tableBody = $("#tbody_0");
-        tableBody.append(markup);
-        lineNo++;
-      });
-    // }
-  }
-);
+        dataBack.forEach(element => {
+          
+          id=element._id; name=element.title; attribute=element.connect;
+
+          lineContent="<tr><td id="+id+">"+id+"</td><td><input type='text' value='"+name+"''>"+
+            "</td><td><input type='text' value='"+attribute+"'></td>";
+          var markup = lineContent + "<td hidden>"+"<button id=b"+lineNo+"_del onclick=delRow($(this))>Delete</button>"+
+          "</td><td hidden>"+"<button id=b"+lineNo+"_update onclick=updateRow($(this))>Update</button></td></tr>";
+          // console.log(lineNo);
+          var tableBody = $("#tbody_0");
+          tableBody.append(markup);
+          lineNo++;
+        });
+      // }
+    }
+  );
 
 
 

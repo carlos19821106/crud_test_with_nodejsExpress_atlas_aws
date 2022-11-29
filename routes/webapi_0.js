@@ -1,21 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const Post = require('../models/Posts');
-// var bodyParser = require('body-parser');
 
-// var jsonBodyParser = bodyParser.json();
-// var urlencodedParser = bodyParser.urlencoded({ extended: false });
 let stringify = require('json-stringify-safe');
-var fs = require('fs');
+// var fs = require('fs');
 
 
 //get all db documents
 router.get('/', async (req, res) => {
     try {
-        // const finePosts = await Post.find()
-        const finePosts=[{_id:'01',title:'anatomy 2nd Edition',connect:'new',__v:0},
-        {_id:'02',title:'how to run faster with getting hurt',connect:'old',__v:0},
-        {_id:'03',title:'it is just a moutain',connect:'fine',__v:0}];
+        const finePosts = await Post.find()
+        // const finePosts=[{_id:'01',title:'anatomy 2nd Edition',connect:'new',__v:0},
+        // {_id:'02',title:'how to run faster with getting hurt',connect:'old',__v:0},
+        // {_id:'03',title:'it is just a moutain',connect:'fine',__v:0}];
         res.json(finePosts)
     } catch (err) {
         res.json({ message: err })
