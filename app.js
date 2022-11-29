@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // view engine setup
 
 app.set('views', path.join(__dirname, 'public'));
-app.set('view engine', 'html');
+//app.set('view engine', 'html');
 
 app.use(logger('dev'));
 app.use(express.json());
