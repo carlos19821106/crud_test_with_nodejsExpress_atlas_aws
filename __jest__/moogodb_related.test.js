@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
-// const $=require("jquery");
 const request = require("supertest");
 const app = require("../app");
-// var express=require("express");
-// const app=express();
 const router=require("../routes/webapi_0");
 const model=require("../models/Posts");
 
@@ -22,26 +19,15 @@ afterEach(async () => {
 
 describe("GET books status", () => {
     it("should return all books", async () => {
-    
         const res = await request(app).get('/webapi_0/');
-        
         expect(res.statusCode).toBe(200);
-        
-        // expect(res.body.length).toBeGreaterThanOrEqual(0);
-    
+    });
+    it("should return all books", async () => {
+        const res = await request(app).get('/webapi_0/');
+        console.log(res.body.length);
+        expect(res.body.length).toBeGreaterThan(0);
     });
 });
 
-describe("GET books number", () => {
-    it("should return all books", async () => {
-    
-        const res = await request(app).get('/webapi_0/');
-        
-        // expect(res.statusCode).toBe(200);
-        
-        expect(res.body.length).toBeGreaterThanOrEqual(0);
-    
-    });
-});
 
 
