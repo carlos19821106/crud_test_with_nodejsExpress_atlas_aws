@@ -38,9 +38,10 @@ jobs:
         run: npm run build --if-present
 
     
-      # - name: Prepare SSH to work with the remote server
-      #   run: |
-      #     cd ~ && mkdir .ssh && cd .ssh && echo \"${{ secrets.SSH_HOSTKEY }}\" > ~/.ssh/known_hosts
+      - name: Prepare SSH to work with the remote server
+        run: |
+          cd ~ && mkdir .ssh && cd .ssh && echo 'ec2-54-244-129-102.us-west-2.compute.amazonaws.com' > ~/.ssh/known_hosts
+          
 
 
       - name: deploy to ec2
