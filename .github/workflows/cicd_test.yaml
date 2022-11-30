@@ -2,7 +2,7 @@ name: Node.js CI/CD
 
 on:
   push:
-    branches: [ main, section_3]
+    branches: [ main, section_3 ]
   
 jobs:
   build:
@@ -38,18 +38,18 @@ jobs:
     
       - name: Prepare SSH to work with the remote server
         run: |
-          cd ~ && mkdir .ssh && cd .ssh && echo \"${{ secrets.NTOUSE2022_SERVERKEY }}\" > ~/.ssh/known_hosts
+          cd ~ && mkdir .ssh && cd .ssh && echo \"${{ secrets.SSH_HOSTKEY }}\" > ~/.ssh/known_hosts
 
 
       - name: deploy to ec2
         uses: easingthemes/ssh-deploy@main
         env:
-          # SSH_PRIVATE_KEY: ${{ Secrets.SERVER_SSH_KEY }}
-          # REMOTE_HOST: ${{ Secrets.REMOTE_HOST }}
-          # REMOTE_USER: ${{ Secrets.REMOTE_USER }}
-          # TARGET: ${{ Secrets.REMOTE_TARGET }}
-          SSH_PRIVATE_KEY: ${{ Secrets.NTOUSE2022_HOSTKEY }}
-          REMOTE_HOST: ${{ Secrets.NTOUSE2022_TARGET}}
+          SSH_PRIVATE_KEY: ${{ Secrets.SERVER_SSH_KEY }}
+          REMOTE_HOST: ${{ Secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ Secrets.REMOTE_USER }}
           TARGET: ${{ Secrets.REMOTE_TARGET }}
+          # SSH_PRIVATE_KEY: ${{ Secrets.SERVERKEY }}
+          # REMOTE_HOST: ${{ Secrets.NTOUSE2022_TARGET}}
+          # REMOTE_USER: ${{ Secrets.REMOTE_USER }}
+          # TARGET: ${{ Secrets.REMOTE_TARGET }}
           run: chmod 777 -R /home/ubuntu/crud_test
