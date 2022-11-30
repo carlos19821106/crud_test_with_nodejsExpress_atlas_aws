@@ -40,7 +40,7 @@ jobs:
     
       - name: Prepare SSH to work with the remote server
         run: |
-          cd ~ && mkdir .ssh && cd .ssh && echo '54.244.129.102' > ~/.ssh/known_hosts
+          cd ~ && mkdir .ssh && cd .ssh && echo 'ec2-54-244-129-102.us-west-2.compute.amazonaws.com' > ~/.ssh/known_hosts
           
 
 
@@ -53,7 +53,7 @@ jobs:
           # TARGET: ${{ Secrets.REMOTE_TARGET }}
           
           SSH_PRIVATE_KEY: ${{Secrets.NTOUSE2022_SSHPRIKEY}}
-          REMOTE_HOST: '54.244.129.102'
+          REMOTE_HOST: 'ec2-54-244-129-102.us-west-2.compute.amazonaws.com'
           REMOTE_USER: 'ubuntu'
           TARGET: '/home/ubuntu/crud_test'
           run: chmod 777 -R /home/ubuntu/crud_test
