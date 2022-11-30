@@ -47,14 +47,14 @@ jobs:
       - name: deploy to ec2
         uses: easingthemes/ssh-deploy@main
         env:
-          SSH_PRIVATE_KEY: ${{ Secrets.SERVER_SSH_KEY }}
-          REMOTE_HOST: ${{ Secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ Secrets.REMOTE_USER }}
-          TARGET: ${{ Secrets.REMOTE_TARGET }}
-          
-          # SSH_PRIVATE_KEY: ${{Secrets.NTOUSE2022_SSHPRIKEY}}
-          # REMOTE_HOST: ${{Secrets.NTOUSE2022_HOST}}
+          # SSH_PRIVATE_KEY: ${{ Secrets.SERVER_SSH_KEY }}
+          # REMOTE_HOST: ${{ Secrets.REMOTE_HOST }}
           # REMOTE_USER: ${{ Secrets.REMOTE_USER }}
           # TARGET: ${{ Secrets.REMOTE_TARGET }}
+          
+          SSH_PRIVATE_KEY: ${{Secrets.NTOUSE2022_SSHPRIKEY}}
+          REMOTE_HOST: ${{Secrets.NTOUSE2022_HOST}}
+          REMOTE_USER: ${{ Secrets.REMOTE_USER }}
+          TARGET: ${{ Secrets.REMOTE_TARGET }}
           run: chmod 777 -R /home/ubuntu/crud_test
 
