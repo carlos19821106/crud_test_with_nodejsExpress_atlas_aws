@@ -19,11 +19,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
+      # - run: npm ci
       # for install related modules for jest test
-      - run: npm install
-      - run: npm run build --if-present
-      - run: npm run test_mongo
+      # - run: npm install
+      # - run: npm run build --if-present
+      # - run: npm run test_mongo
 
       - name: checkout the files
         uses: actions/checkout@v3
@@ -54,7 +54,7 @@ jobs:
           
           SSH_PRIVATE_KEY: ${{Secrets.NTOUSE2022_SSHPRIKEY}}
           REMOTE_HOST: '54.244.129.102'
-          REMOTE_USER: ${{ Secrets.REMOTE_USER }}
+          REMOTE_USER: 'ubuntu'
           TARGET: '/home/ubuntu/crud_test'
           run: chmod 777 -R /home/ubuntu/crud_test
 
