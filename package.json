@@ -7,7 +7,7 @@
     "start": "nodemon ./bin/www",
     "__start": "nodemon app.js",
     "test": "jest --env=jsdom",
-    "test_mongo": "cross-env NODE_ENV=test jest --testTimeout=500000"
+    "test_mongo": "cross-env NODE_ENV=test jest --testTimeout=10000"
   },
   "dependencies": {
     "body-parser": "^1.20.1",

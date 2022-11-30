@@ -21,7 +21,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm run test_mongo
+      # - run: npm run test_mongo
 
       - name: checkout the files
         uses: actions/checkout@v3
