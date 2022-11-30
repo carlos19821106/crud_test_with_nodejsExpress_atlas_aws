@@ -55,6 +55,6 @@ jobs:
           SSH_PRIVATE_KEY: ${{Secrets.NTOUSE2022_SSHPRIKEY}}
           REMOTE_HOST: '54.244.129.102'
           REMOTE_USER: ${{ Secrets.REMOTE_USER }}
-          TARGET: '/home/ubuntu'
+          TARGET: '/home/ubuntu/crud_test'
           run: chmod 777 -R /home/ubuntu/crud_test
 
