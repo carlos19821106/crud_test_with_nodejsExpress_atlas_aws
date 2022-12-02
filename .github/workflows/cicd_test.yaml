@@ -5,7 +5,7 @@ on:
     branches: [ main, section_3 ]
   
 jobs:
-  build:
+  tests_then_deploy:
 
     runs-on: ubuntu-latest
 
@@ -14,6 +14,8 @@ jobs:
         node-version: [16.x]
 
     steps:
+    
+    #below is for unit-test(CI)
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -24,6 +26,10 @@ jobs:
       - run: npm install
       - run: npm run build --if-present
       - run: npm run test_mongo
+
+      
+
+    # below is for deploy(CD)
 
       - name: checkout the files
         uses: actions/checkout@v3
@@ -36,26 +42,23 @@ jobs:
         run: npm install
       - name: run build test
         run: npm run build --if-present
-
-    
-      # - name: Prepare SSH to work with the remote server
-      #   run: |
-      #     cd ~ && mkdir .ssh && cd .ssh && echo ${{ Secrets.REMOTE_HOST }} > ~/.ssh/known_hosts
-          
-
-
       - name: deploy to ec2
+        # ssh-keygen -m PEM -t rsa -b 4096<--if the deploy way is as below(easingthemes/ssh-deploy@main)
+        # the key spec use for cd must as the left of arrow line
         uses: easingthemes/ssh-deploy@main
         env:
+          # below is for dev crud_test
           # SSH_PRIVATE_KEY: ${{ Secrets.SERVER_SSH_KEY }}
           # REMOTE_HOST: ${{ Secrets.REMOTE_HOST }}
           # REMOTE_USER: ${{ Secrets.REMOTE_USER }}
           # TARGET: ${{ Secrets.REMOTE_TARGET }}
           
+          # below is for course
           SSH_PRIVATE_KEY: ${{Secrets.NTOUSE2022_SSHPRIKEY}}
           REMOTE_HOST: ${{Secrets.NTOUSE2022_HOST}}
           REMOTE_USER: ${{ Secrets.REMOTE_USER }}
           TARGET: '/home/ubuntu/section_3/crud_test'
-          run: chmod 777 -R /home/ubuntu/crud_test
+          #below is for we dev on windows
+          run: chmod 777 -R /home/ubuntu/section_3/crud_test
 
 
